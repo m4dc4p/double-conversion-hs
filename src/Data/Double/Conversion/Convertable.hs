@@ -17,6 +17,7 @@ import qualified Data.Text.Encoding as T
 import qualified Data.Text as T
 import Data.Text (Text)
 import Numeric
+import Text.Printf (printf)
 
 -- | Type class for floating data types, that can be converted, using double-conversion library
 --
@@ -76,17 +77,19 @@ class (RealFloat a, IsString b) => Convertable a b where
 -- instance Convertable Double BB.Builder where
 -- instance Convertable Float BB.Builder where
 instance Convertable Double ByteString where
-  toExponential = error ""
-  toPrecision = error ""
-  toFixed = error ""
-  toShortest = error ""
+  toExponential (-1) = toShortest
+  toExponential digits = T.encodeUtf8 . T.pack . printf "%.*e" digits
+  toPrecision digits = T.encodeUtf8 . T.pack . printf "%.*f" digits
+  toFixed digits = T.encodeUtf8 . T.pack . printf "%.*f" digits
+  toShortest = T.encodeUtf8 . T.pack . printf "%g"
 
 -- instance Convertable Float B.ByteString where
 instance Convertable Double Text where
-  toExponential = error ""
-  toPrecision = error ""
-  toFixed = error ""
-  toShortest = error ""
+  toExponential (-1) = toShortest
+  toExponential digits = T.pack . printf "%.*e" digits
+  toPrecision digits = T.pack . printf "%.*f" digits
+  toFixed digits = T.pack . printf "%.*f" digits
+  toShortest = T.pack . printf "%g"
 
 -- instance Convertable Float Text where
 -- instance Convertable Double T.Builder where

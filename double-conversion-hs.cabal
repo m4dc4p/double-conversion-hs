@@ -1,7 +1,6 @@
 name:                double-conversion
 version:             2.0.2.0
-synopsis:            example with persistent and servant
-description:         Simple example to illustrate how to use persistent and servant in combination.
+synopsis:            Replacement for the double-conversion project, without any C++.
 build-type:          Simple
 cabal-version:       >=1.10
 

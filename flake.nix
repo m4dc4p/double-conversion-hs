@@ -1,5 +1,5 @@
 {
-  description = "Simple Haskell Shell for 47 Degrees Type-Level Programming Course";
+  description = "Replacement for the double conversion project";
   inputs.haskellNix.url = "github:input-output-hk/haskell.nix";
   inputs.nixpkgs-path.url = "nixpkgs/release-23.05";
   inputs.flake-utils.url = "github:numtide/flake-utils";
